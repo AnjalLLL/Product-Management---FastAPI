@@ -121,24 +121,6 @@ http://127.0.0.1:8000
 }
 ```
 
-## Notes and limitations
-
-- CORS is fully open right now (`allow_origins=["*"]`), which is convenient for development but not ideal for production.
-- The backend returns simple JSON error messages instead of FastAPI `HTTPException` responses.
-- The database credentials are hardcoded instead of coming from environment variables.
-- There is no `requirements.txt` file yet, so Python dependencies need to be installed manually.
-- The frontend is intentionally simple and does not include form validation or advanced UI handling.
-
-## Good next improvements
-
-If you want to keep building on this project, these would be useful upgrades:
-
-- move database settings into environment variables
-- add a `requirements.txt` or `pyproject.toml`
-- return proper HTTP status codes and error responses
-- add validation and user feedback in the React form
-- add tests for both backend and frontend
-- split routes, schemas, and database logic into separate modules
 
 ## Summary
 
