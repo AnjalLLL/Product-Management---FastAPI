@@ -1,5 +1,5 @@
 # Product-Management---FastAPI
-his project is a small full-stack product management app built with FastAPI, PostgreSQL, SQLAlchemy, and React.
+this project is a small full-stack product management app built with FastAPI, PostgreSQL, SQLAlchemy, and React.
 
 The backend exposes a simple CRUD API for products, and the frontend provides a lightweight interface for adding, updating, listing, and deleting products. It feels like a learning project or starter app, which makes it easy to understand and extend.
 
