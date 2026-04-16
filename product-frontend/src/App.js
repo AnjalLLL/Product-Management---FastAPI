@@ -15,8 +15,13 @@ function App() {
 
   // Fetch products
   const fetchProducts = async () => {
-    const res = await axios.get(`${API}/products`);
-    setProducts(res.data);
+    try {
+      const res = await axios.get(`${API}/products`);
+      setProducts(res.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      alert("Failed to load products. Make sure the backend API is running on http://127.0.0.1:8000");
+    }
   };
 
   useEffect(() => {
@@ -30,30 +35,47 @@ function App() {
 
   // Add product
   const addProduct = async () => {
-    await axios.post(`${API}/products`, {
-      ...form,
-      id: Number(form.id),
-      price: Number(form.price),
-      quantity: Number(form.quantity)
-    });
-    fetchProducts();
+    try {
+      await axios.post(`${API}/products`, {
+        ...form,
+        id: Number(form.id),
+        price: Number(form.price),
+        quantity: Number(form.quantity)
+      });
+      setForm({ id: "", name: "", description: "", price: "", quantity: "" });
+      fetchProducts();
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("Failed to add product");
+    }
   };
 
   // Delete product
   const deleteProduct = async (id) => {
-    await axios.delete(`${API}/products/${id}`);
-    fetchProducts();
+    try {
+      await axios.delete(`${API}/products/${id}`);
+      fetchProducts();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      alert("Failed to delete product");
+    }
   };
 
   // Update product
   const updateProduct = async () => {
-    await axios.put(`${API}/products/${form.id}`, {
-      ...form,
-      id: Number(form.id),
-      price: Number(form.price),
-      quantity: Number(form.quantity)
-    });
-    fetchProducts();
+    try {
+      await axios.put(`${API}/products/${form.id}`, {
+        ...form,
+        id: Number(form.id),
+        price: Number(form.price),
+        quantity: Number(form.quantity)
+      });
+      setForm({ id: "", name: "", description: "", price: "", quantity: "" });
+      fetchProducts();
+    } catch (error) {
+      console.error("Error updating product:", error);
+      alert("Failed to update product");
+    }
   };
 
   return (
